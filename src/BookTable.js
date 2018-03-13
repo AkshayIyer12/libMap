@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Form from './Form'
 import BookList from './BookList'
 import uuidv4 from 'uuid/v4'
-const createBookObj = ({ id, title, author }) => {
+const createBookObj = ({ title, author }) => id => {
   return {
     id: id,
     author: author,
@@ -17,12 +17,12 @@ class BookTable extends Component {
       author: ''
     }
   }
-  render = () => {
+  render () {
     let id = uuidv4()
     return (
       <div>
         <Form title={this.state.title} author={this.state.author} />
-        <BookList book={createBookObj(this.state)}/>
+        <BookList book={createBookObj(this.state)(id)} />
       </div>
     )
   }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 class BookList extends Component {
-  render = () => {
+  render () {
     let books = [...this.props.book]
     console.log(books)
     return (
