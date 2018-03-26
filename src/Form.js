@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import uuidv4 from "uuid/v4";
 
-const createBookObj = ({title, author, id}) => {
+const createBookObj = ({title, author}) => {
   return {
-    id: id,
+    id: uuidv4(),
     author: author,
     title: title
   }
@@ -13,8 +13,7 @@ class Form extends Component {
     super(props)
     this.state = {
       title: '',
-      author: '',
-      id: uuidv4()
+      author: ''
     }
   }
   handleTextChange = e => {
@@ -22,7 +21,10 @@ class Form extends Component {
   }
   handleSubmit = e => {
     e.preventDefault()
-    this.onNewBookEntry(createBookObj(this.state))
+    this.props.changeBooks([
+      ...this.props.books,
+      createBookObj(this.state)
+    ]);
   }
   render () {
     return (

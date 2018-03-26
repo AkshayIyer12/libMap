@@ -9,18 +9,12 @@ class BookTable extends Component {
       books: []
     }
   }
-  addNewBook = book => {
-    this.setState({books: [...this.state.books, book]})
-    console.log(this.state.books)
-  }
+  addNewBook = books => this.setState({books: books})
   render () {
     return (
       <div>
-        <Form
-          title={this.state.title}
-          author={this.state.author}
-          onNewBookEntry={this.addNewBook} />
-        <BookList book={this.state.books} />
+        <Form books={this.state.books} changeBooks={this.addNewBook} />
+        <BookList books={this.state.books} />
       </div>
     )
   }
