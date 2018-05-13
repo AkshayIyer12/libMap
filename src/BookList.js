@@ -2,8 +2,7 @@ import React, { Component } from 'react'
 
 class BookList extends Component {
   render () {
-    let books = [...this.props.books]
-    let filteredBooks = books.filter(a => (a !== null || a !== undefined) ? a : null)
+    let filteredBooks = [...this.props.books].filter(a => (a !== null || a !== undefined) ? a : null)
     if (filteredBooks.length > 0) {
       return (<ul>
         {filteredBooks.map(book => (
